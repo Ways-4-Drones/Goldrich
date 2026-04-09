@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5303c39a9d9cb66abf8d98bbcc96e1c5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5303c39a9d9cb66abf8d98bbcc96e1c5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5303c39a9d9cb66abf8d98bbcc96e1c5 = L.map(
+                "map_5303c39a9d9cb66abf8d98bbcc96e1c5",
+                {
+                    center: [37.0, -76.3],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_69eeb2d3ee67ebeaa1521ba1dee2ebf2 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_69eeb2d3ee67ebeaa1521ba1dee2ebf2.addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+    var color_map_0e3e8f354ea0c3d1bab57a8e510702a7 = {};
+
+    
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.color = d3.scale.threshold()
+              .domain([0.0, 0.01282565130260521, 0.02565130260521042, 0.038476953907815636, 0.05130260521042084, 0.06412825651302605, 0.07695390781563127, 0.08977955911823648, 0.10260521042084168, 0.1154308617234469, 0.1282565130260521, 0.14108216432865733, 0.15390781563126255, 0.16673346693386773, 0.17955911823647297, 0.19238476953907815, 0.20521042084168337, 0.2180360721442886, 0.2308617234468938, 0.243687374749499, 0.2565130260521042, 0.26933867735470945, 0.28216432865731467, 0.2949899799599199, 0.3078156312625251, 0.32064128256513025, 0.33346693386773546, 0.3462925851703407, 0.35911823647294594, 0.37194388777555115, 0.3847695390781563, 0.3975951903807615, 0.41042084168336673, 0.423246492985972, 0.4360721442885772, 0.44889779559118237, 0.4617234468937876, 0.4745490981963928, 0.487374749498998, 0.5002004008016032, 0.5130260521042084, 0.5258517034068136, 0.5386773547094189, 0.5515030060120241, 0.5643286573146293, 0.5771543086172345, 0.5899799599198398, 0.6028056112224449, 0.6156312625250502, 0.6284569138276553, 0.6412825651302605, 0.6541082164328658, 0.6669338677354709, 0.6797595190380763, 0.6925851703406815, 0.7054108216432866, 0.7182364729458919, 0.731062124248497, 0.7438877755511023, 0.7567134268537075, 0.7695390781563126, 0.7823647294589179, 0.795190380761523, 0.8080160320641283, 0.8208416833667335, 0.8336673346693386, 0.846492985971944, 0.8593186372745492, 0.8721442885771544, 0.8849699398797596, 0.8977955911823647, 0.91062124248497, 0.9234468937875752, 0.9362725450901804, 0.9490981963927856, 0.9619238476953907, 0.974749498997996, 0.9875751503006013, 1.0004008016032064, 1.0132264529058117, 1.0260521042084167, 1.038877755511022, 1.0517034068136273, 1.0645290581162326, 1.0773547094188378, 1.0901803607214429, 1.1030060120240481, 1.1158316633266534, 1.1286573146292587, 1.1414829659318637, 1.154308617234469, 1.167134268537074, 1.1799599198396795, 1.1927855711422846, 1.2056112224448898, 1.218436873747495, 1.2312625250501004, 1.2440881763527056, 1.2569138276553107, 1.269739478957916, 1.282565130260521, 1.2953907815631265, 1.3082164328657315, 1.3210420841683368, 1.3338677354709418, 1.346693386773547, 1.3595190380761526, 1.3723446893787576, 1.385170340681363, 1.397995991983968, 1.4108216432865732, 1.4236472945891785, 1.4364729458917838, 1.4492985971943888, 1.462124248496994, 1.4749498997995991, 1.4877755511022046, 1.5006012024048097, 1.513426853707415, 1.5262525050100202, 1.5390781563126252, 1.5519038076152307, 1.5647294589178358, 1.577555110220441, 1.590380761523046, 1.6032064128256514, 1.6160320641282566, 1.6288577154308619, 1.641683366733467, 1.6545090180360722, 1.6673346693386772, 1.6801603206412827, 1.692985971943888, 1.705811623246493, 1.7186372745490983, 1.7314629258517034, 1.7442885771543089, 1.757114228456914, 1.7699398797595192, 1.7827655310621242, 1.7955911823647295, 1.8084168336673347, 1.82124248496994, 1.8340681362725453, 1.8468937875751503, 1.8597194388777556, 1.8725450901803609, 1.8853707414829661, 1.8981963927855712, 1.9110220440881764, 1.9238476953907815, 1.936673346693387, 1.949498997995992, 1.9623246492985973, 1.9751503006012026, 1.9879759519038076, 2.000801603206413, 2.0136272545090184, 2.0264529058116234, 2.0392785571142285, 2.0521042084168335, 2.064929859719439, 2.077755511022044, 2.0905811623246495, 2.1034068136272546, 2.1162324649298596, 2.129058116232465, 2.14188376753507, 2.1547094188376756, 2.1675350701402807, 2.1803607214428857, 2.193186372745491, 2.2060120240480963, 2.2188376753507013, 2.231663326653307, 2.244488977955912, 2.2573146292585173, 2.270140280561122, 2.2829659318637274, 2.295791583166333, 2.308617234468938, 2.3214428857715435, 2.334268537074148, 2.3470941883767535, 2.359919839679359, 2.372745490981964, 2.385571142284569, 2.398396793587174, 2.4112224448897797, 2.424048096192385, 2.43687374749499, 2.4496993987975952, 2.4625250501002007, 2.4753507014028058, 2.4881763527054113, 2.501002004008016, 2.5138276553106214, 2.526653306613227, 2.539478957915832, 2.552304609218437, 2.565130260521042, 2.5779559118236475, 2.590781563126253, 2.603607214428858, 2.616432865731463, 2.629258517034068, 2.6420841683366736, 2.654909819639279, 2.6677354709418837, 2.680561122244489, 2.693386773547094, 2.7062124248496997, 2.719038076152305, 2.73186372745491, 2.7446893787575153, 2.7575150300601203, 2.770340681362726, 2.783166332665331, 2.795991983967936, 2.8088176352705414, 2.8216432865731464, 2.8344689378757515, 2.847294589178357, 2.860120240480962, 2.8729458917835675, 2.8857715430861726, 2.8985971943887776, 2.911422845691383, 2.924248496993988, 2.9370741482965936, 2.9498997995991982, 2.9627254509018037, 2.975551102204409, 2.9883767535070143, 3.0012024048096193, 3.0140280561122244, 3.02685370741483, 3.0396793587174353, 3.0525050100200404, 3.0653306613226454, 3.0781563126252505, 3.090981963927856, 3.1038076152304614, 3.116633266533066, 3.1294589178356715, 3.1422845691382766, 3.155110220440882, 3.167935871743487, 3.180761523046092, 3.1935871743486977, 3.2064128256513027, 3.219238476953908, 3.2320641282565132, 3.2448897795591183, 3.2577154308617238, 3.270541082164329, 3.283366733466934, 3.2961923847695394, 3.3090180360721444, 3.32184368737475, 3.3346693386773545, 3.34749498997996, 3.3603206412825655, 3.3731462925851705, 3.385971943887776, 3.3987975951903806, 3.411623246492986, 3.4244488977955916, 3.4372745490981966, 3.4501002004008017, 3.4629258517034067, 3.475751503006012, 3.4885771543086177, 3.5014028056112227, 3.514228456913828, 3.527054108216433, 3.5398797595190383, 3.552705410821644, 3.5655310621242484, 3.578356713426854, 3.591182364729459, 3.6040080160320644, 3.6168336673346695, 3.6296593186372745, 3.64248496993988, 3.655310621242485, 3.6681362725450906, 3.6809619238476956, 3.6937875751503007, 3.706613226452906, 3.719438877755511, 3.7322645290581162, 3.7450901803607217, 3.7579158316633268, 3.7707414829659323, 3.783567134268537, 3.7963927855711423, 3.809218436873748, 3.822044088176353, 3.8348697394789584, 3.847695390781563, 3.8605210420841685, 3.873346693386774, 3.886172344689379, 3.898997995991984, 3.911823647294589, 3.9246492985971946, 3.9374749498998, 3.950300601202405, 3.96312625250501, 3.975951903807615, 3.9887775551102207, 4.001603206412826, 4.014428857715431, 4.027254509018037, 4.040080160320641, 4.052905811623247, 4.065731462925852, 4.078557114228457, 4.091382765531063, 4.104208416833667, 4.117034068136273, 4.129859719438878, 4.142685370741484, 4.155511022044088, 4.168336673346693, 4.181162324649299, 4.193987975951904, 4.206813627254509, 4.219639278557114, 4.232464929859719, 4.245290581162325, 4.25811623246493, 4.270941883767535, 4.28376753507014, 4.296593186372745, 4.309418837675351, 4.322244488977956, 4.335070140280561, 4.347895791583166, 4.3607214428857715, 4.3735470941883765, 4.386372745490982, 4.3991983967935875, 4.4120240480961925, 4.424849699398798, 4.437675350701403, 4.4505010020040086, 4.463326653306614, 4.476152304609219, 4.488977955911824, 4.501803607214429, 4.514629258517035, 4.52745490981964, 4.540280561122244, 4.55310621242485, 4.565931863727455, 4.578757515030061, 4.591583166332666, 4.60440881763527, 4.617234468937876, 4.630060120240481, 4.642885771543087, 4.655711422845692, 4.668537074148296, 4.681362725450902, 4.694188376753507, 4.707014028056113, 4.719839679358718, 4.732665330661322, 4.745490981963928, 4.758316633266533, 4.771142284569138, 4.783967935871744, 4.796793587174348, 4.809619238476954, 4.822444889779559, 4.835270541082164, 4.84809619238477, 4.8609218436873745, 4.87374749498998, 4.886573146292585, 4.8993987975951905, 4.912224448897796, 4.9250501002004015, 4.937875751503006, 4.9507014028056116, 4.963527054108217, 4.9763527054108225, 4.989178356713428, 5.002004008016032, 5.014829659318638, 5.027655310621243, 5.040480961923849, 5.053306613226454, 5.066132264529058, 5.078957915831664, 5.091783567134269, 5.104609218436874, 5.11743486973948, 5.130260521042084, 5.14308617234469, 5.155911823647295, 5.1687374749499, 5.181563126252506, 5.19438877755511, 5.207214428857716, 5.220040080160321, 5.232865731462926, 5.245691382765532, 5.258517034068136, 5.271342685370741, 5.284168336673347, 5.296993987975952, 5.309819639278558, 5.322645290581162, 5.335470941883767, 5.348296593186373, 5.361122244488978, 5.373947895791584, 5.386773547094188, 5.3995991983967935, 5.412424849699399, 5.4252505010020045, 5.43807615230461, 5.4509018036072145, 5.46372745490982, 5.4765531062124255, 5.489378757515031, 5.502204408817636, 5.515030060120241, 5.527855711422846, 5.540681362725452, 5.553507014028057, 5.566332665330662, 5.579158316633267, 5.591983967935872, 5.604809619238478, 5.617635270541083, 5.630460921843688, 5.643286573146293, 5.656112224448898, 5.668937875751503, 5.681763527054109, 5.694589178356714, 5.707414829659319, 5.720240480961924, 5.733066132264529, 5.745891783567135, 5.75871743486974, 5.771543086172345, 5.78436873747495, 5.797194388777555, 5.810020040080161, 5.822845691382766, 5.83567134268537, 5.848496993987976, 5.861322645290581, 5.874148296593187, 5.886973947895792, 5.8997995991983965, 5.912625250501002, 5.9254509018036075, 5.938276553106213, 5.951102204408818, 5.963927855711423, 5.9767535070140285, 5.989579158316634, 6.002404809619239, 6.0152304609218445, 6.028056112224449, 6.040881763527055, 6.05370741482966, 6.066533066132265, 6.079358717434871, 6.092184368737475, 6.105010020040081, 6.117835671342686, 6.130661322645291, 6.143486973947897, 6.156312625250501, 6.169138276553106, 6.181963927855712, 6.194789579158317, 6.207615230460923, 6.220440881763527, 6.233266533066132, 6.246092184368738, 6.258917835671343, 6.271743486973949, 6.284569138276553, 6.297394789579158, 6.310220440881764, 6.323046092184369, 6.335871743486974, 6.348697394789579, 6.361523046092184, 6.37434869739479, 6.387174348697395, 6.4])
+              .range(['#eaf5f8ff', '#eaf5f8ff', '#e9f5f8ff', '#e8f5f8ff', '#e7f4f8ff', '#e6f4f7ff', '#e6f4f7ff', '#e5f3f7ff', '#e4f3f7ff', '#e3f3f7ff', '#e2f3f6ff', '#e1f2f6ff', '#e1f2f6ff', '#e0f2f6ff', '#dff1f6ff', '#def1f5ff', '#ddf1f5ff', '#ddf1f5ff', '#dcf0f5ff', '#dbf0f5ff', '#daf0f4ff', '#d9eff4ff', '#d8eff4ff', '#d8eff4ff', '#d7eff4ff', '#d6eef3ff', '#d5eef3ff', '#d4eef3ff', '#d4edf3ff', '#d3edf3ff', '#d2edf2ff', '#d1ecf2ff', '#d0ecf2ff', '#cfecf2ff', '#cfecf1ff', '#ceebf1ff', '#cdebf1ff', '#ccebf1ff', '#cbeaf1ff', '#cbeaf0ff', '#caeaf0ff', '#c9eaf0ff', '#c8e9f0ff', '#c7e9f0ff', '#c6e9efff', '#c6e8efff', '#c5e8efff', '#c4e8efff', '#c3e8efff', '#c2e7eeff', '#c2e7eeff', '#c1e7eeff', '#c0e6eeff', '#bfe6eeff', '#bee6edff', '#bde6edff', '#bde5edff', '#bce5edff', '#bbe5edff', '#bae4ecff', '#b9e4ecff', '#b9e4ecff', '#b8e3ecff', '#b7e3ecff', '#b6e3ebff', '#b5e3ebff', '#b5e2ebff', '#b4e2ebff', '#b3e2ebff', '#b2e1eaff', '#b1e1eaff', '#b0e1eaff', '#b0e1eaff', '#afe0e9ff', '#aee0e9ff', '#ade0e9ff', '#acdfe9ff', '#acdfe9ff', '#abdfe8ff', '#aadfe8ff', '#a9dee8ff', '#a8dee8ff', '#a7dee8ff', '#a7dde7ff', '#a6dde7ff', '#a5dde7ff', '#a4dde7ff', '#a3dce7ff', '#a3dce6ff', '#a2dce6ff', '#a1dbe6ff', '#a0dbe6ff', '#9fdbe6ff', '#9edbe5ff', '#9edae5ff', '#9ddae5ff', '#9cdae5ff', '#9bd9e5ff', '#9ad9e4ff', '#9ad9e4ff', '#99d8e4ff', '#98d8e4ff', '#97d8e4ff', '#96d8e3ff', '#95d7e3ff', '#95d7e3ff', '#94d7e3ff', '#93d6e3ff', '#92d6e2ff', '#91d6e2ff', '#91d6e2ff', '#90d5e2ff', '#8fd5e1ff', '#8ed5e1ff', '#8dd4e1ff', '#8cd4e1ff', '#8cd4e1ff', '#8bd4e0ff', '#8ad3e0ff', '#89d3e0ff', '#88d3e0ff', '#88d2e0ff', '#87d2dfff', '#86d2dfff', '#85d2dfff', '#84d1dfff', '#83d1dfff', '#83d1deff', '#82d0deff', '#81d0deff', '#80d0deff', '#7fd0deff', '#7fcfddff', '#7ecfddff', '#7dcfddff', '#7cceddff', '#7bceddff', '#7bcedcff', '#7acddcff', '#79cddcff', '#78cddcff', '#77cddcff', '#76ccdbff', '#76ccdbff', '#75ccdbff', '#74cbdbff', '#73cbdbff', '#72cbdaff', '#72cbdaff', '#71cadaff', '#70cadaff', '#6fcad9ff', '#6ec9d9ff', '#6dc9d9ff', '#6dc9d9ff', '#6cc9d9ff', '#6bc8d8ff', '#6ac8d8ff', '#69c8d8ff', '#69c7d8ff', '#68c7d8ff', '#67c7d7ff', '#66c7d7ff', '#65c6d7ff', '#64c6d7ff', '#64c6d7ff', '#63c5d6ff', '#62c5d6ff', '#61c5d6ff', '#60c4d6ff', '#60c4d6ff', '#5fc4d5ff', '#5ec4d5ff', '#5dc3d5ff', '#5cc3d5ff', '#5bc3d5ff', '#5bc2d4ff', '#5ac2d4ff', '#59c2d4ff', '#58c2d4ff', '#57c1d4ff', '#57c1d3ff', '#56c1d3ff', '#55c0d3ff', '#54c0d3ff', '#53c0d3ff', '#52c0d2ff', '#52bfd2ff', '#51bfd2ff', '#50bfd2ff', '#4fbed1ff', '#4ebed1ff', '#4ebed1ff', '#4dbed1ff', '#4cbdd1ff', '#4bbdd0ff', '#4abdd0ff', '#4abcd0ff', '#49bcd0ff', '#48bcd0ff', '#47bccfff', '#46bbcfff', '#45bbcfff', '#45bbcfff', '#44bacfff', '#43baceff', '#42baceff', '#41b9ceff', '#41b9ceff', '#40b9ceff', '#3fb9cdff', '#3eb8cdff', '#3db8cdff', '#3cb8cdff', '#3cb7cdff', '#3bb7ccff', '#3ab7ccff', '#39b7ccff', '#38b6ccff', '#38b6ccff', '#37b6cbff', '#36b5cbff', '#35b5cbff', '#34b5cbff', '#33b5cbff', '#33b4caff', '#32b4caff', '#31b4caff', '#30b3caff', '#2fb3c9ff', '#2fb3c9ff', '#2eb3c9ff', '#2db2c9ff', '#2cb2c9ff', '#2bb2c8ff', '#2ab1c8ff', '#2ab1c8ff', '#29b1c8ff', '#28b1c8ff', '#27b0c7ff', '#26b0c7ff', '#26b0c7ff', '#25afc7ff', '#24afc7ff', '#23afc6ff', '#22aec6ff', '#21aec6ff', '#21aec6ff', '#20aec6ff', '#1fadc5ff', '#1fadc5ff', '#1eacc5ff', '#1eacc4ff', '#1eabc4ff', '#1eabc3ff', '#1eaac3ff', '#1eaac2ff', '#1ea9c2ff', '#1ea9c2ff', '#1da8c1ff', '#1da8c1ff', '#1da7c0ff', '#1da7c0ff', '#1da6bfff', '#1da6bfff', '#1da5beff', '#1da5beff', '#1ca4beff', '#1ca4bdff', '#1ca3bdff', '#1ca3bcff', '#1ca2bcff', '#1ca2bbff', '#1ca1bbff', '#1ca1baff', '#1ba0baff', '#1ba0baff', '#1b9fb9ff', '#1b9fb9ff', '#1b9eb8ff', '#1b9eb8ff', '#1b9db7ff', '#1b9db7ff', '#1a9cb6ff', '#1a9cb6ff', '#1a9bb6ff', '#1a9bb5ff', '#1a9ab5ff', '#1a9ab4ff', '#1a99b4ff', '#1a99b3ff', '#1998b3ff', '#1998b2ff', '#1997b2ff', '#1997b2ff', '#1996b1ff', '#1996b1ff', '#1995b0ff', '#1995b0ff', '#1894afff', '#1894afff', '#1893aeff', '#1893aeff', '#1892aeff', '#1892adff', '#1891adff', '#1891acff', '#1790acff', '#1790abff', '#178fabff', '#178faaff', '#178eaaff', '#178eaaff', '#178da9ff', '#178da9ff', '#168ca8ff', '#168ca8ff', '#168ba7ff', '#168ba7ff', '#168aa7ff', '#168aa6ff', '#1689a6ff', '#1689a5ff', '#1588a5ff', '#1588a4ff', '#1587a4ff', '#1587a3ff', '#1586a3ff', '#1586a3ff', '#1585a2ff', '#1585a2ff', '#1484a1ff', '#1484a1ff', '#1483a0ff', '#1483a0ff', '#14829fff', '#14829fff', '#14819fff', '#14819eff', '#13809eff', '#13809dff', '#137f9dff', '#137f9cff', '#137e9cff', '#137e9bff', '#137d9bff', '#137d9bff', '#127c9aff', '#127c9aff', '#127b99ff', '#127b99ff', '#127a98ff', '#127a98ff', '#127997ff', '#127997ff', '#117897ff', '#117896ff', '#117796ff', '#117795ff', '#117695ff', '#117694ff', '#117594ff', '#117593ff', '#107493ff', '#107493ff', '#107392ff', '#107392ff', '#107291ff', '#107291ff', '#107190ff', '#107190ff', '#0f708fff', '#0f708fff', '#0f6f8fff', '#0f6f8eff', '#0f6e8eff', '#0f6e8dff', '#0f6d8dff', '#0f6d8cff', '#0e6c8cff', '#0e6c8cff', '#0e6b8bff', '#0e6b8bff', '#0e6a8aff', '#0e6a8aff', '#0e6989ff', '#0e6989ff', '#0d6888ff', '#0d6888ff', '#0d6788ff', '#0d6787ff', '#0d6687ff', '#0d6686ff', '#0d6586ff', '#0d6485ff', '#0c6485ff', '#0c6384ff', '#0c6384ff', '#0c6284ff', '#0c6283ff', '#0c6183ff', '#0c6182ff', '#0c6082ff', '#0b6081ff', '#0b5f81ff', '#0b5f80ff', '#0b5e80ff', '#0b5e80ff', '#0b5d7fff', '#0b5d7fff', '#0b5c7eff', '#0a5c7eff', '#0a5b7dff', '#0a5b7dff', '#0a5a7cff', '#0a5a7cff', '#0a597cff', '#0a597bff', '#0a587bff', '#09587aff', '#09577aff', '#095779ff', '#095679ff', '#095678ff', '#095578ff', '#095578ff', '#095477ff', '#085477ff', '#085376ff', '#085376ff', '#085275ff', '#085275ff', '#085174ff', '#085174ff', '#085074ff', '#075073ff', '#074f73ff', '#074f72ff', '#074e72ff', '#074e71ff', '#074d71ff', '#074d71ff', '#074c70ff', '#064c70ff', '#064b6fff', '#064b6fff', '#064a6eff', '#064a6eff', '#06496dff', '#06496dff', '#06486dff', '#05486cff', '#05476cff', '#05476bff', '#05466bff', '#05466aff', '#05456aff', '#054569ff', '#054469ff', '#044469ff', '#044368ff', '#044368ff', '#044267ff', '#044267ff', '#044166ff', '#044166ff', '#044065ff', '#034065ff', '#033f65ff', '#033f64ff', '#033e64ff', '#033e63ff', '#033d63ff', '#033d62ff', '#033c62ff', '#023c61ff', '#023b61ff', '#023b61ff', '#023a60ff', '#023a60ff', '#02395fff', '#02395fff', '#02385eff', '#01385eff', '#01375dff', '#01375dff', '#01365dff', '#01365cff', '#01355cff', '#01355bff', '#01345bff', '#00345aff', '#00335aff', '#003359ff', '#003259ff', '#003259ff', '#003158ff', '#003158ff', '#003057ff', '#003057ff']);
+    
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x = d3.scale.linear()
+              .domain([0.0, 6.4])
+              .range([0, 450 - 50]);
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.legend = L.control({position: 'topright'});
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.legend.addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.xAxis = d3.svg.axis()
+        .scale(color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 3.2, 6.4]);
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.g = color_map_0e3e8f354ea0c3d1bab57a8e510702a7.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.g.selectAll("rect")
+        .data(color_map_0e3e8f354ea0c3d1bab57a8e510702a7.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x(color_map_0e3e8f354ea0c3d1bab57a8e510702a7.color.domain()[i - 1]) : color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x.range()[0],
+            x1: i < color_map_0e3e8f354ea0c3d1bab57a8e510702a7.color.domain().length ? color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x(color_map_0e3e8f354ea0c3d1bab57a8e510702a7.color.domain()[i]) : color_map_0e3e8f354ea0c3d1bab57a8e510702a7.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_0e3e8f354ea0c3d1bab57a8e510702a7.g.call(color_map_0e3e8f354ea0c3d1bab57a8e510702a7.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("% of Simulated Patients");
+    
+            var circle_marker_43db5eec5ec76ac0287095b6e0ca1f0c = L.circleMarker(
+                [36.862, -76.295],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1996b1ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.2, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_43db5eec5ec76ac0287095b6e0ca1f0c.bindTooltip(
+                `<div>
+                     <b>Norfolk (Ghent/Downtown)</b><br>ZIP: 23504<br>Share: <b>3.8%</b> of patients<br>Drive time: ~8 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_2c501adceea2513306ae09b2c3427c33 = L.circleMarker(
+                [36.889, -76.304],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ca1bbff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_2c501adceea2513306ae09b2c3427c33.bindTooltip(
+                `<div>
+                     <b>Norfolk (Granby)</b><br>ZIP: 23505<br>Share: <b>3.5%</b> of patients<br>Drive time: ~12 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_126072914be0f869a195f3c88c3abbb1 = L.circleMarker(
+                [36.893, -76.31],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2bb2c8ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_126072914be0f869a195f3c88c3abbb1.bindTooltip(
+                `<div>
+                     <b>Norfolk (Ghent North)</b><br>ZIP: 23508<br>Share: <b>3.0%</b> of patients<br>Drive time: ~7 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_79ee32facddc0a3d3e8575e13cd38809 = L.circleMarker(
+                [36.849, -76.29],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ec4d5ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.8, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_79ee32facddc0a3d3e8575e13cd38809.bindTooltip(
+                `<div>
+                     <b>Norfolk (Downtown)</b><br>ZIP: 23510<br>Share: <b>2.2%</b> of patients<br>Drive time: ~10 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_cecd63dfa5ea29907f9522b1466b5e57 = L.circleMarker(
+                [36.873, -76.308],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#45bbcfff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_cecd63dfa5ea29907f9522b1466b5e57.bindTooltip(
+                `<div>
+                     <b>Norfolk (Ghent South)</b><br>ZIP: 23517<br>Share: <b>2.6%</b> of patients<br>Drive time: ~9 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_e8a0668e5a90b6bf74d8424b50ad9d68 = L.circleMarker(
+                [36.906, -76.258],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#52bfd2ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_e8a0668e5a90b6bf74d8424b50ad9d68.bindTooltip(
+                `<div>
+                     <b>Norfolk (Azalea Acres)</b><br>ZIP: 23518<br>Share: <b>2.4%</b> of patients<br>Drive time: ~18 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_c34fa80bb1266e79de7807681de2f163 = L.circleMarker(
+                [36.82, -76.278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#65c6d7ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.4, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_c34fa80bb1266e79de7807681de2f163.bindTooltip(
+                `<div>
+                     <b>Norfolk (South)</b><br>ZIP: 23523<br>Share: <b>2.1%</b> of patients<br>Drive time: ~15 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_5029d1daa3ab6f7c9934a6f162bd8ed1 = L.circleMarker(
+                [36.854, -75.978],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#117695ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.4, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_5029d1daa3ab6f7c9934a6f162bd8ed1.bindTooltip(
+                `<div>
+                     <b>Virginia Beach (Oceanfront)</b><br>ZIP: 23451<br>Share: <b>4.6%</b> of patients<br>Drive time: ~22 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_d6b511a091a54879f7debf433c0263d9 = L.circleMarker(
+                [36.84, -76.102],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0b5f80ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.8, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_d6b511a091a54879f7debf433c0263d9.bindTooltip(
+                `<div>
+                     <b>Virginia Beach (Kempsville)</b><br>ZIP: 23452<br>Share: <b>5.2%</b> of patients<br>Drive time: ~28 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_4348184ec1d38130da5ebbddfb66bac1 = L.circleMarker(
+                [36.882, -76.057],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1da5beff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_4348184ec1d38130da5ebbddfb66bac1.bindTooltip(
+                `<div>
+                     <b>Virginia Beach (North)</b><br>ZIP: 23454<br>Share: <b>3.4%</b> of patients<br>Drive time: ~25 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_3da738d2b024624b2ba4127b5b19f64e = L.circleMarker(
+                [36.809, -76.096],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#095779ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_3da738d2b024624b2ba4127b5b19f64e.bindTooltip(
+                `<div>
+                     <b>Virginia Beach (Central)</b><br>ZIP: 23462<br>Share: <b>5.4%</b> of patients<br>Drive time: ~30 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_6127d9cbe097abc2c540e66d346267e9 = L.circleMarker(
+                [36.784, -76.133],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0d6787ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_6127d9cbe097abc2c540e66d346267e9.bindTooltip(
+                `<div>
+                     <b>Virginia Beach (South)</b><br>ZIP: 23464<br>Share: <b>5.0%</b> of patients<br>Drive time: ~35 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_eecbe52536cefdb8b0f47d047dc9384b = L.circleMarker(
+                [36.728, -76.228],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#003057ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_eecbe52536cefdb8b0f47d047dc9384b.bindTooltip(
+                `<div>
+                     <b>Chesapeake (Greenbrier)</b><br>ZIP: 23320<br>Share: <b>6.4%</b> of patients<br>Drive time: ~25 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_c2985085d720067c3fe4d38629e7aa53 = L.circleMarker(
+                [36.771, -76.379],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0f6e8eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.2, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_c2985085d720067c3fe4d38629e7aa53.bindTooltip(
+                `<div>
+                     <b>Chesapeake (Western Branch)</b><br>ZIP: 23321<br>Share: <b>4.8%</b> of patients<br>Drive time: ~32 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_c3e1b7beeab2d6d9e7bf16558640abcd = L.circleMarker(
+                [36.679, -76.186],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ea9c2ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_c3e1b7beeab2d6d9e7bf16558640abcd.bindTooltip(
+                `<div>
+                     <b>Chesapeake (Hickory)</b><br>ZIP: 23322<br>Share: <b>3.3%</b> of patients<br>Drive time: ~38 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_e91ea36a926904ffe03727f18914b142 = L.circleMarker(
+                [36.792, -76.302],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2bb2c8ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_e91ea36a926904ffe03727f18914b142.bindTooltip(
+                `<div>
+                     <b>Chesapeake (Deep Creek)</b><br>ZIP: 23325<br>Share: <b>3.0%</b> of patients<br>Drive time: ~30 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_c1ba73a8c491c2342ae7b4d6bf93cf56 = L.circleMarker(
+                [36.826, -76.35],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1da5beff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_c1ba73a8c491c2342ae7b4d6bf93cf56.bindTooltip(
+                `<div>
+                     <b>Portsmouth (Central)</b><br>ZIP: 23701<br>Share: <b>3.4%</b> of patients<br>Drive time: ~18 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_cdecd3cd83d2e2762028dc7a5534eb6a = L.circleMarker(
+                [36.862, -76.368],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3eb8cdff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.8, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_cdecd3cd83d2e2762028dc7a5534eb6a.bindTooltip(
+                `<div>
+                     <b>Portsmouth (North)</b><br>ZIP: 23703<br>Share: <b>2.7%</b> of patients<br>Drive time: ~20 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_926b5397d1580e7222fa2df922c3a2c1 = L.circleMarker(
+                [36.818, -76.365],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#52bfd2ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_926b5397d1580e7222fa2df922c3a2c1.bindTooltip(
+                `<div>
+                     <b>Portsmouth (Cradock)</b><br>ZIP: 23704<br>Share: <b>2.4%</b> of patients<br>Drive time: ~22 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_28092e0e803e75043f2a5c6ed1bb3600 = L.circleMarker(
+                [36.729, -76.591],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1892adff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_28092e0e803e75043f2a5c6ed1bb3600.bindTooltip(
+                `<div>
+                     <b>Suffolk (Central)</b><br>ZIP: 23434<br>Share: <b>3.9%</b> of patients<br>Drive time: ~42 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_1cfe48dd432c293fff7a7ce969e5cc35 = L.circleMarker(
+                [36.794, -76.508],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32b4caff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.6, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_1cfe48dd432c293fff7a7ce969e5cc35.bindTooltip(
+                `<div>
+                     <b>Suffolk (North)</b><br>ZIP: 23435<br>Share: <b>2.9%</b> of patients<br>Drive time: ~38 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_cbdcc5602b88df8e4b57ec515e5b27e3 = L.circleMarker(
+                [37.03, -76.352],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1fadc5ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.8, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_cbdcc5602b88df8e4b57ec515e5b27e3.bindTooltip(
+                `<div>
+                     <b>Hampton (Central)</b><br>ZIP: 23661<br>Share: <b>3.2%</b> of patients<br>Drive time: ~28 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_010faf1e659d1d61cb451a8f532a43c2 = L.circleMarker(
+                [37.02, -76.298],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38b6ccff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.2, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_010faf1e659d1d61cb451a8f532a43c2.bindTooltip(
+                `<div>
+                     <b>Hampton (Phoebus)</b><br>ZIP: 23663<br>Share: <b>2.8%</b> of patients<br>Drive time: ~30 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_d2ee5041fe35e9076dcf66c8dea52556 = L.circleMarker(
+                [37.059, -76.394],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1ca1bbff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_d2ee5041fe35e9076dcf66c8dea52556.bindTooltip(
+                `<div>
+                     <b>Hampton (Coliseum)</b><br>ZIP: 23666<br>Share: <b>3.5%</b> of patients<br>Drive time: ~32 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_9078ddb5b77a434a9a5dfba1e0fa1103 = L.circleMarker(
+                [37.03, -76.432],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1fadc5ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.8, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_9078ddb5b77a434a9a5dfba1e0fa1103.bindTooltip(
+                `<div>
+                     <b>Newport News (Central)</b><br>ZIP: 23601<br>Share: <b>3.2%</b> of patients<br>Drive time: ~35 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_a2823317572a233d29705c52b6d03c9a = L.circleMarker(
+                [37.103, -76.51],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0d6787ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.0, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_a2823317572a233d29705c52b6d03c9a.bindTooltip(
+                `<div>
+                     <b>Newport News (Denbigh)</b><br>ZIP: 23602<br>Share: <b>5.0%</b> of patients<br>Drive time: ~40 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_9421740112c19ce8cbcc6af2eeac9ead = L.circleMarker(
+                [37.081, -76.498],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#25afc7ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.4, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_9421740112c19ce8cbcc6af2eeac9ead.bindTooltip(
+                `<div>
+                     <b>Newport News (Oyster Point)</b><br>ZIP: 23606<br>Share: <b>3.1%</b> of patients<br>Drive time: ~38 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_b68d861bc296ca0944354e5e9d1816cc = L.circleMarker(
+                [36.985, -76.631],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9edae5ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_b68d861bc296ca0944354e5e9d1816cc.bindTooltip(
+                `<div>
+                     <b>Smithfield (Isle of Wight)</b><br>ZIP: 23430<br>Share: <b>1.2%</b> of patients<br>Drive time: ~55 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_bc7410753ed4c13a5c27bfd847ef530e = L.circleMarker(
+                [36.677, -76.936],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b1e1eaff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_bc7410753ed4c13a5c27bfd847ef530e.bindTooltip(
+                `<div>
+                     <b>Franklin (Southampton Co.)</b><br>ZIP: 23851<br>Share: <b>0.9%</b> of patients<br>Drive time: ~75 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var circle_marker_6ca6fa437f44c45163e1c6031a26cd45 = L.circleMarker(
+                [37.712, -75.673],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b1e1eaff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_marker_6ca6fa437f44c45163e1c6031a26cd45.bindTooltip(
+                `<div>
+                     <b>Accomac (Eastern Shore)</b><br>ZIP: 23301<br>Share: <b>0.9%</b> of patients<br>Drive time: ~90 min
+                 </div>`,
+                {
+  "sticky": false,
+}
+            );
+        
+    
+            var marker_db7116984922aa89ad54750e96192b62 = L.marker(
+                [36.8858, -76.306],
+                {
+}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            var icon_c58c350b50e19bdcd7936f2672bf4dee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1009e00279d28a0dbeea4aef2ebf37f1 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_04474dbe047bd4dd615689d51364b156 = $(`<div id="html_04474dbe047bd4dd615689d51364b156" style="width: 100.0%; height: 100.0%;"><b>Goldrich Institute</b><br>Andrews Hall, ODU<br>Norfolk, VA</div>`)[0];
+                popup_1009e00279d28a0dbeea4aef2ebf37f1.setContent(html_04474dbe047bd4dd615689d51364b156);
+            
+        
+
+        marker_db7116984922aa89ad54750e96192b62.bindPopup(popup_1009e00279d28a0dbeea4aef2ebf37f1)
+        ;
+
+        
+    
+    
+            marker_db7116984922aa89ad54750e96192b62.bindTooltip(
+                `<div>
+                     Goldrich Institute (clinic)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db7116984922aa89ad54750e96192b62.setIcon(icon_c58c350b50e19bdcd7936f2672bf4dee);
+            
+    
+            var circle_54d132ea5c2b65c39b2e947e91792a7f = L.circle(
+                [36.8858, -76.306],
+                {"bubblingMouseEvents": true, "color": "#1FADC5", "dashArray": "6 4", "dashOffset": null, "fill": false, "fillColor": "#1FADC5", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40500, "stroke": true, "weight": 1.5}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_54d132ea5c2b65c39b2e947e91792a7f.bindTooltip(
+                `<div>
+                     ~30-min drive radius
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_57474ea6dc754f97f27a2d6069eae753 = L.circle(
+                [36.8858, -76.306],
+                {"bubblingMouseEvents": true, "color": "#003057", "dashArray": "6 4", "dashOffset": null, "fill": false, "fillColor": "#003057", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 81000, "stroke": true, "weight": 1.5}
+            ).addTo(map_5303c39a9d9cb66abf8d98bbcc96e1c5);
+        
+    
+            circle_57474ea6dc754f97f27a2d6069eae753.bindTooltip(
+                `<div>
+                     ~60-min drive radius
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
