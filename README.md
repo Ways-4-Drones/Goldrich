@@ -129,8 +129,3 @@ This case study is an example of community-engaged pedagogy and a direct feedbac
 
 The case was first offered in Spring 2026. It is designed to be updated annually as the clinic's Epic EHR system (adopted July 2025) generates richer operational data, and as the simulation model is refined based on student feedback and faculty review.
 
----
-
-## Contact
-
-For questions about the case study, the simulation tool, or collaboration opportunities, please contact the Strome College of Business at Old Dominion University.
