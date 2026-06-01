@@ -2,6 +2,7 @@
 ### A Case Study in Health Operations Management
 
 **Strome College of Business, Old Dominion University**
+
 **Lawrence J. Goldrich Institute for NeuroHealth**
 
 ---
